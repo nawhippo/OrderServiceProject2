@@ -43,7 +43,7 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/orders}")
     public int create(@Valid @RequestBody Customer customer,String state, String city, int postalcode, Item[] items){
-        Order order = new Order(city,state, customer.getId(),postalcode);
+        Order order = new Order(city,state, customer.getId(), items, postalcode);
         customer.orders.add(order);
         return order.getOrderid();
     }
