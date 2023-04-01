@@ -40,4 +40,8 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int Orderid;
+
+    public int getOrderid() {
+        return this.Orderid;
+    }
 }
