@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,13 @@ public class CustomerController {
 
 
     //ORDER COMMANDS
+
+    @GetMapping("/orders/{id}")
+    public ArrayList<Order> getOrder(@PathVariable int id) {
+        InMemoryCustomerRepository repository1 = (InMemoryCustomerRepository) repository;
+        return repository1.getCustomerbyId(id).getOrders();
+    }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/orders/return")
     public void returnOrderItem(@PathVariable int id, @RequestBody Order order, @RequestBody int itemid, @RequestBody String reason) {
@@ -44,7 +52,7 @@ public class CustomerController {
     @PostMapping("/orders}")
     public int create(@Valid @RequestBody Customer customer,String state, String city, int postalcode, Item[] items){
         Order order = new Order(city,state, customer.getId(), items, postalcode);
-        customer.orders.add(order);
+        customer.getOrders().add(order);
         return order.getOrderid();
     }
 

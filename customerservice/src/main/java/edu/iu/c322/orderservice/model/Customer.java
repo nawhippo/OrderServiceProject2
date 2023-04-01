@@ -23,7 +23,7 @@ public class Customer {
     private String name;
     private String email;
 
-    public ArrayList<Order> orders;
+    private ArrayList<Order> orders;
 
     public int getId() {
         return id;
