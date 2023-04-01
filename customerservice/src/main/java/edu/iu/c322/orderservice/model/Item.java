@@ -3,6 +3,10 @@ package edu.iu.c322.orderservice.model;
 import jakarta.validation.constraints.NotEmpty;
 
 public class Item {
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
     public Item(String name, int quantity, int price) {
         this.name = name;
         this.quantity = quantity;
@@ -16,7 +20,8 @@ public class Item {
     @NotEmpty(message = "item price cannot be empty.")
     private int price;
 
-
+    //can be empty
+    private String reason = "";
 
 
 }

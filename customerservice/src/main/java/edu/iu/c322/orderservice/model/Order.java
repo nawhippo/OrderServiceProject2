@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
 
+
 public class Order {
 
     public Order(@NotEmpty(message = "item list cannot be empty") Item[] items) {
